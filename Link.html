@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Will you be my Valentine?</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-bottom: 50px; /* Space for images */
+            position: relative;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 5px red;
+            text-align: center;
+            margin-top: 40px; /* Extra space above */
+        }
+
+        /* Back button at the top left */
+        .valentine-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: red;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .valentine-button:hover {
+            background-color: darkred;
+        }
+
+        /* Side Decorations (No Borders) */
+        .side-decor {
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .side-decor.left {
+            left: 0;
+        }
+
+        .side-decor.right {
+            right: 0;
+        }
+
+        .decor-item {
+            font-size: 30px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px white;
+            }
+            to {
+                text-shadow: 0 0 20px white;
+            }
+        }
+
+        /* Image Layout: Pyramid Shape */
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 100px; /* Moved images further down */
+        }
+
+        .top-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .bottom-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Image Styling */
+        .image-container img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #b30000; /* Deep red border */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Floating hearts and flowers */
+        .floating-item {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.8;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- "Go Back" button at the top left -->
+    <a href="will-you-be-my-valentine.html">
+        <button class="valentine-button">
+            ❤️ Go Back
+        </button>
+    </a>
+
+    <h1>Will You Be My VALENTINE? </h1>
+
+    <!-- Left & Right Side Decorations (No Borders) -->
+    <div class="side-decor left">
+        <div class="decor-item">❤️</div>
+        <div class="decor-item">💖</div>
+        <div class="decor-item">🌹</div>
+        <div class="decor-item">💘</div>
+        <div class="decor-item">🌸</div>
+    </div>
+
+    <div class="side-decor right">
+        <div class="decor-item">🌸</div>
+        <div class="decor-item">💝</div>
+        <div class="decor-item">❤️</div>
+        <div class="decor-item">🌹</div>
+        <div class="decor-item">💖</div>
+    </div>
+
+    <!-- Image Slots: Pyramid Shape (Moved Down) -->
+    <div class="image-container">
+        <!-- Top Row: 2 Images -->
+        <div class="top-row">
+            <img src="476073252_3933126806943496_2332637394971240366_n.jpg" alt="Image 1">
+            <img src="475733805_9478825245502028_2730339748385015539_n.jpg" alt="Image 5">
+        </div>
+
+        <!-- Bottom Row: 3 Images (Image 3 is Centered) -->
+        <div class="bottom-row">
+            <img src="475489175_980834094011139_4584901352539924348_n.jpg" alt="Image 2">
+            <img src="Flowers.jpg" alt="Image 3"> <!-- Center Image -->
+            <img src="475686271_2346912522343388_1547921725610835363_n.jpg" alt="Image 4">
+        </div>
+    </div>
+
+    <script>
+        // Handle Floating Hearts & Flowers
+        function createFloatingItem() {
+            const item = document.createElement("div");
+            item.classList.add("floating-item");
+
+            // Randomly choose a heart or a flower
+            const symbols = ["❤️", "💖", "🌸", "💐", "🌹"];
+            item.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+
+            // Random position on the screen
+            item.style.left = Math.random() * 100 + "vw";
+            item.style.animationDuration = (Math.random() * 3 + 3) + "s"; // Vary animation speed
+
+            document.body.appendChild(item);
+
+            // Remove element after animation
+            setTimeout(() => {
+                item.remove();
+            }, 5000);
+        }
+
+        setInterval(createFloatingItem, 500); // Generate floating elements every 500ms
+    </script>
+
+</body>
+</html>

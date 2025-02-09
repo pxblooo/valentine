@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Will you be my Valentine?</title>
+    <style>
+        /* Romantic Valentine's Background */
+        body {
+            background-color: #ffccd5; /* Soft pink */
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh; /* Full screen height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            margin: 0;
+        }
+
+        h1 {
+            text-shadow: 2px 2px 5px #b30000; /* Deep red shadow */
+            color: #b30000; /* Romantic dark red */
+            margin-bottom: 30px;
+        }
+
+        /* Bigger and glowing pink envelope button */
+        .envelope-button {
+            position: relative;
+            display: inline-block;
+            padding: 30px 60px; /* Bigger size */
+            font-size: 24px; /* Bigger text */
+            color: white;
+            background-color: #ff4d79; /* Pink envelope */
+            border: none;
+            cursor: pointer;
+            clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 100% 100%, 0% 100%);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .envelope-button:hover {
+            background-color: #cc004d; /* Darker pink */
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 50, 100, 0.8); /* Soft pink glow */
+        }
+
+        /* Heart inside the envelope */
+        .heart {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px; /* Bigger heart */
+        }
+
+        /* Style for the paragraph */
+        p {
+            color: #b30000;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Click to OPEN my Heart</h1>
+
+    <!-- Centered pink envelope button -->
+    <a href="Link.html" class="envelope-button">
+        <span class="heart">❤️</span>
+    </a>
+
+    
+
+</body>
+</html>
