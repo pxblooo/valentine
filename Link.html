@@ -14,11 +14,14 @@
             position: relative;
         }
 
+        /* Bigger Header */
         h1 {
             color: white;
-            text-shadow: 2px 2px 5px red;
+            text-shadow: 4px 4px 10px red;
             text-align: center;
             margin-top: 40px; /* Extra space above */
+            font-size: 60px; /* Increased size */
+            font-weight: bold;
         }
 
         /* Back button at the top left */
@@ -41,7 +44,7 @@
             background-color: darkred;
         }
 
-        /* Side Decorations (No Borders) */
+        /* Side Decorations */
         .side-decor {
             position: absolute;
             top: 0;
@@ -76,13 +79,45 @@
             }
         }
 
+        /* Floating Hearts Effect (Both Directions) */
+        .floating-heart {
+            position: absolute;
+            opacity: 0.8;
+            animation: floatHearts linear infinite;
+            will-change: transform, opacity;
+        }
+
+        /* Hearts Floating Up */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Hearts Floating Down */
+        @keyframes floatDown {
+            0% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 0;
+            }
+        }
+
         /* Image Layout: Pyramid Shape */
         .image-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            margin-top: 100px; /* Moved images further down */
+            margin-top: 120px; /* Moved images further down */
         }
 
         .top-row {
@@ -108,28 +143,6 @@
         .image-container img:hover {
             transform: scale(1.1);
         }
-
-        /* Floating hearts and flowers */
-        .floating-item {
-            position: absolute;
-            font-size: 24px;
-            opacity: 0.8;
-            animation: floatUp 5s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh);
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 
@@ -142,9 +155,9 @@
         </button>
     </a>
 
-    <h1>Will You Be My VALENTINE? </h1>
+    <h1>Will You Be My VALENTINE? ❤️</h1>
 
-    <!-- Left & Right Side Decorations (No Borders) -->
+    <!-- Left & Right Side Decorations -->
     <div class="side-decor left">
         <div class="decor-item">❤️</div>
         <div class="decor-item">💖</div>
@@ -168,7 +181,7 @@
             <img src="476073252_3933126806943496_2332637394971240366_n.jpg" alt="Image 1">
             <img src="475733805_9478825245502028_2730339748385015539_n.jpg" alt="Image 5">
         </div>
-
+    
         <!-- Bottom Row: 3 Images (Image 3 is Centered) -->
         <div class="bottom-row">
             <img src="475489175_980834094011139_4584901352539924348_n.jpg" alt="Image 2">
@@ -178,28 +191,37 @@
     </div>
 
     <script>
-        // Handle Floating Hearts & Flowers
-        function createFloatingItem() {
-            const item = document.createElement("div");
-            item.classList.add("floating-item");
+        // Generate Floating Hearts (Up and Down)
+        function createFloatingHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("floating-heart");
 
-            // Randomly choose a heart or a flower
-            const symbols = ["❤️", "💖", "🌸", "💐", "🌹"];
-            item.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            // Random heart emoji
+            const symbols = ["❤️", "💖", "💘", "💝", "💞"];
+            heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
 
-            // Random position on the screen
-            item.style.left = Math.random() * 100 + "vw";
-            item.style.animationDuration = (Math.random() * 3 + 3) + "s"; // Vary animation speed
+            // Random position, size, and color
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 2 + 2) + "s"; // Faster movement
+            heart.style.fontSize = Math.random() * 30 + 10 + "px"; // Vary sizes
+            heart.style.color = ["#ff0000", "#ff4d6d", "#ff80b3", "#ff99cc"][Math.floor(Math.random() * 4)]; // Random colors
 
-            document.body.appendChild(item);
+            // Randomly decide if the heart floats up or down
+            const isFloatingUp = Math.random() > 0.5;
+            heart.style.animationName = isFloatingUp ? "floatUp" : "floatDown";
 
-            // Remove element after animation
+            // Position hearts at top or bottom randomly
+            heart.style.top = isFloatingUp ? "100vh" : "-10vh";
+
+            document.body.appendChild(heart);
+
+            // Remove heart after animation
             setTimeout(() => {
-                item.remove();
-            }, 5000);
+                heart.remove();
+            }, 3000);
         }
 
-        setInterval(createFloatingItem, 500); // Generate floating elements every 500ms
+        setInterval(createFloatingHeart, 50); // Generate hearts much faster (every 50ms)
     </script>
 
 </body>
